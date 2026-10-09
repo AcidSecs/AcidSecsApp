@@ -25,7 +25,7 @@ jobs:
       run: dotnet restore
 
     - name: Build iOS Simulator Binary
-      run: dotnet build -f net10.0-ios -c Debug /p:RuntimeIdentifier=iossimulator-x64 /p:BuildIpa=false /p:ValidateXcodeVersion=false
+      run: dotnet build -f net10.0-ios -c Debug /p:RuntimeIdentifier=iossimulator-x64 /p:BuildIpa=false /p:ValidateXcodeVersion=false /p:MtouchLink=None
 
     - name: Compress App Bundle
       run: |
