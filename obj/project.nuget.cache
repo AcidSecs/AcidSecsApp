@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "POBW83ooK7o=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\soroo\\Documents\\AcidSecsApp\\AcidSecsApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\soroo\\.nuget\\packages\\microsoft.net.workloads.10.0.400\\10.401.1\\microsoft.net.workloads.10.0.400.10.401.1.nupkg.sha512"
+  ],
+  "logs": []
+}
