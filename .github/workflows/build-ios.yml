@@ -1,0 +1,39 @@
+name: Build iOS Simulator App
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Install iOS Workload
+      run: dotnet workload install ios maui
+
+    - name: Restore Dependencies
+      run: dotnet restore
+
+    - name: Build iOS Simulator Binary
+      run: dotnet build -f net8.0-ios -c Release /p:RuntimeIdentifier=iossimulator-x64 /p:BuildIpa=false
+
+    - name: Compress App Bundle
+      run: |
+        cd bin/Release/net8.0-ios/iossimulator-x64
+        zip -r app.zip *.app
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ios-simulator-build
+        path: bin/Release/net8.0-ios/iossimulator-x64/app.zip
